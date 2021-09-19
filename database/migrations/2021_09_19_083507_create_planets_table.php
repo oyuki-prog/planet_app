@@ -17,8 +17,8 @@ class CreatePlanetsTable extends Migration
             $table->smallIncrements('id');
             $table->string('ja_name');
             $table->string('en_name');
-            $table->integer('radius')->unsigned();
-            $table->integer('weight')->unsigned();
+            $table->unsignedInteger('radius');
+            $table->unsignedInteger('weight');
             $table->timestamps();
         });
     }
