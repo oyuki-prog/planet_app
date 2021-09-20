@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PlanetRequest;
 use App\Models\Planet;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class PlanetController extends Controller
         return view('planets.create');
     }
 
-    public function store(Request $request)
+    public function store(PlanetRequest $request)
     {
         $planet = new Planet;
 
@@ -32,6 +33,7 @@ class PlanetController extends Controller
         $planet->en_name = $request->en_name;
         $planet->radius = $request->radius;
         $planet->weight = $request->weight;
+        $planet->timestamps = false;
 
         $planet->save();
 
@@ -45,7 +47,7 @@ class PlanetController extends Controller
         return view('planets.edit',compact('planet'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PlanetRequest $request, $id)
     {
         $planet = Planet::find($id);
 
@@ -53,6 +55,7 @@ class PlanetController extends Controller
         $planet->en_name = $request->en_name;
         $planet->radius = $request->radius;
         $planet->weight = $request->weight;
+        $planet->timestamps = false;
 
         $planet->save();
 
